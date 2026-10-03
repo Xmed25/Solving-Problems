@@ -1,4 +1,5 @@
-#Ask the user for an integer.
+# Problem: Reverse a Number
+# Ask the user for an integer.
 # Reverse its digits.
 # Example:
 # Input: 12345
