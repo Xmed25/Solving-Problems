@@ -170,6 +170,89 @@ print( data)
  
 # 19. Calculate the sum of all visits in df (i.e. find the total number of visits).
 print(data["visits"].sum())
- 
+
 # 20. Calculate the mean age for each different animal in df.
 print(data.groupby("animal")["age"].mean())
+
+
+# Use this dataset for all 10 problems:
+import pandas as pd
+
+
+data = {
+    "Employee": [
+        "Goku", "Vegeta", "Gohan", "Piccolo", "Trunks",
+        "Luffy", "Zoro", "Nami", "Light", "L"
+    ],
+    "Department": [
+        "IT", "Sales", "IT", "HR", "Sales",
+        "IT", "HR", "Sales", "IT", "HR"
+    ],
+    "Age": [25, 30, 22, 35, 28, 24, 32, 26, 29, 31],
+    "Salary": [6000, 7500, 5000, 6500, 7000, 5500, 6200, 5800, 9000, 8500],
+    "Experience": [3, 7, 1, 10, 5, 2, 8, 4, 6, 9],
+    "Performance": [90, 85, 95, 80, 88, 92, 75, 89, 98, 96]
+}
+
+
+data = pd.DataFrame(data)
+
+# Problem 21
+# Tasks:
+# 1. Find employees whose salary is greater than 6000.
+# 2. Find employees in the IT department with performance above 90.
+# 3. Find employees whose age is between 25 and 30.
+# 4. Find employees who work in either HR or Sales.
+# 5. Display only Employee, Department, and Salary.
+
+print(data[data["Salary"]>6000])
+print(data[(data["Department"]=="IT")& (data["Performance"]>90)])
+print(data[data["Age"].between(25,30)])
+print(data[(data["Department"]=="HR")|(data["Department"]=="Sales")])
+print(data[["Employee","Department","Salary"]])
+
+# Problem 22 
+# Tasks:
+# 1. Sort employees by salary in descending order.
+# 2. Find the employee with the highest salary.
+# 3. Find the three employees with the highest performance.
+# 4. Add a new column called Salary_Rank based on salary.
+import numpy as np
+print(data.sort_values(["Salary"]))
+high=np.argmax(data["Salary"])
+print(f"Employee: {data["Employee"][high]} : {data["Salary"].max()}")
+sort=data.sort_values(["Performance","Employee"],ascending=False)
+print(sort.head(3))
+data["Salary_Rank"] = data["Salary"].rank(ascending=False,method="min")
+
+# Problem 23 
+# Tasks:
+# 1. Calculate the average salary for each department.
+# 2. Calculate the maximum performance in each department.
+# 3. Count employees in each department.
+# 4. Calculate the average experience for each department.
+# 5. Display all these statistics in one DataFrame.
+print(data.groupby("Department")["Salary"].mean())
+print(data.groupby("Department")["Performance"].max())
+print(data.groupby("Department")["Employee"].count())
+print(data.groupby("Department")["Experience"].mean())
+stats = data.groupby("Department").agg(
+    Average_Salary=("Salary", "mean"),
+    Max_Performance=("Performance", "max"),
+    Employee_Count=("Employee", "count"),
+    Average_Experience=("Experience", "mean")
+)
+
+print(stats)
+
+# Problem 24 
+
+# Tasks:
+# 1. Find all missing values.
+# 2. Count missing values in each column.
+# 3. Replace missing salaries with the average salary.
+# 4. Replace missing performance with 0.
+# 5. Remove rows that still contain missing values.
+print(data.isna())
+print(data.isna().sum())
+# there is no missing values
