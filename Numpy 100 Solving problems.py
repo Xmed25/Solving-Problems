@@ -326,4 +326,50 @@ print(a[a==b])
 print(len(a[a==b]))
 print(a-b)
 
+# Problem 29 
+# Given the scores array:
+# 1. Calculate the average score of each employee.
+# 2. Find the highest score of each employee.
+# 3. Find the lowest score of each employee.
+# 4. Calculate the average score of each subject.
+# 5. Find the employee with the highest overall average.
 
+import numpy as np
+
+employees = np.array([
+    ["Goku", "IT", 85, 90, 88],
+    ["Vegeta", "Sales", 78, 82, 80],
+    ["Gohan", "IT", 92, 95, 94],
+    ["Piccolo", "HR", 75, 80, 78],
+    ["Trunks", "Sales", 88, 85, 90],
+    ["Luffy", "IT", 95, 91, 96],
+    ["Zoro", "HR", 70, 75, 72],
+    ["Nami", "Sales", 90, 92, 89],
+    ["Light", "IT", 83, 87, 85],
+    ["L", "HR", 98, 96, 97]
+])
+
+names = employees[:, 0]
+scores = employees[:, 2:].astype(int)
+avg_scores = np.mean(scores, axis=1)
+max_scores = np.max(scores, axis=1)
+min_scores = np.min(scores, axis=1)
+subject_avg = np.mean(scores, axis=0)
+best_index = np.argmax(avg_scores)
+
+print("Employee Statistics:")
+
+for i in range(len(names)):
+    print(
+        f"{names[i]}: Average = {avg_scores[i]:.2f}, "
+        f"Highest = {max_scores[i]}, "
+        f"Lowest = {min_scores[i]}"
+    )
+
+print("\nSubject Averages:")
+print(f"Subject 1: {subject_avg[0]:.2f}")
+print(f"Subject 2: {subject_avg[1]:.2f}")
+print(f"Subject 3: {subject_avg[2]:.2f}")
+
+print("\nBest Employee:")
+print(f"{names[best_index]}: {avg_scores[best_index]:.2f}")
