@@ -373,3 +373,216 @@ print(f"Subject 3: {subject_avg[2]:.2f}")
 
 print("\nBest Employee:")
 print(f"{names[best_index]}: {avg_scores[best_index]:.2f}")
+
+# Problem 30 
+# Create a NumPy array containing the numbers from 1 to 10.
+
+# Requirements:
+# - Use np.arange().
+# - Store the array in a variable named arr.
+# - Print the array.
+# - Print the sum of all its elements.
+import numpy as np
+arr=np.arange(1,11)
+print(arr)
+print(arr.sum())
+
+# Problem 31 
+# You are given the following array:
+# import numpy as np
+# numbers = np.array([12, 45, 23, 67, 34, 89, 15, 56])
+
+# Write a program to calculate and print:
+# 1. The maximum value.
+# 2. The minimum value.
+# 3. The average value.
+# 4. The number of elements in the array.
+import numpy as np
+numbers = np.array([12, 45, 23, 67, 34, 89, 15, 56])
+
+print(np.max(numbers))
+print(np.min(numbers))
+print(np.mean(numbers))
+print(numbers.size)
+
+# Problem 32 
+# You have a dataset containing daily temperatures:
+# import numpy as np
+# temperatures = np.array([22, 25, 19, 30, 27, 33, 24, 28, 35, 21])
+
+# Write a program to:
+# 1. Print the first 4 temperatures.
+# 2. Print the last 3 temperatures.
+# 3. Print the temperature at index 5.
+# 4. Print every second element in the array.
+import numpy as np
+temperatures = np.array([22, 25, 19, 30, 27, 33, 24, 28, 35, 21])
+print(temperatures[:4])
+print(temperatures[-3:])
+print(temperatures[5])
+print(temperatures[::2])
+
+# Problem 33 
+# You are given two arrays:
+# import numpy as np
+# a = np.array([10, 20, 30, 40, 50])
+# b = np.array([2, 4, 6, 8, 10])
+
+# Write code to print:
+# 1. a + b
+# 2. a - b
+# 3. a * b
+# 4. a / b
+# 5. a ** 2
+import numpy as np
+a = np.array([10, 20, 30, 40, 50])
+b = np.array([2, 4, 6, 8, 10])
+
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+print(a**2)
+
+# Problem 34 
+# You are given an array of student grades:
+# import numpy as np
+# grades = np.array([45, 78, 92, 55, 33, 88, 67, 95, 49, 81])
+
+# Write a program to:
+# 1. Select all grades greater than or equal to 70.
+# 2. Select all grades below 50.
+# 3. Select all grades between 60 and 90 (inclusive).
+# 4. Count how many students passed (grade ≥ 50).
+import numpy as np
+grades = np.array([45, 78, 92, 55, 33, 88, 67, 95, 49, 81])
+
+print(grades[grades>=70])
+print(grades[grades<50])
+print(grades[(grades>=60) & (grades<=90)])
+print(len(grades[grades>=50]))
+
+# Problem 35 
+# You have the following array:
+# import numpy as np
+# numbers = np.arange(1, 13)
+
+# Write a program to:
+# 1. Reshape the array into 3 rows and 4 columns.
+# 2. Print the new array.
+# 3. Print its shape.
+# 4. Print its number of dimensions.
+import numpy as np
+numbers = np.arange(1, 13)
+print(numbers.shape)
+arr=numbers.reshape(3,4)
+print(arr)
+print(arr.shape)
+print(arr.ndim)
+
+# Problem 36 
+# You have a dataset containing product prices:
+# import numpy as np
+# prices = np.array([250, 100, 350, 200, 100, 450, 250, 300, 150, 350])
+
+# Write a program to:
+# 1. Sort prices from smallest to largest.
+# 2. Sort prices from largest to smallest.
+# 3. Extract only unique prices (remove duplicates).
+# 4. Find the number of unique prices.
+import numpy as np
+prices = np.array([250, 100, 350, 200, 100, 450, 250, 300, 150, 350])
+
+print(np.sort(prices))
+print(np.sort(prices)[::-1])
+unique,count=np.unique(prices,return_counts=True)
+print(unique)
+print(count)
+
+# Problem 37 
+# You have a dataset of student grades across three subjects:
+# import numpy as np
+# grades = np.array([    [80, 90, 70],    [60, 75, 85],    [90, 95, 100],    [70, 80, 75]])
+
+# Each row represents a student, and each column represents a subject.
+
+# Write a program to:
+# 1. Calculate the total grades for each student.
+# 2. Calculate the average grade for each subject.
+# 3. Find the highest grade for each student.
+# 4. Find the lowest grade for each subject.
+import numpy as np
+
+grades = np.array([
+    [80, 90, 70],
+    [60, 75, 85],
+    [90, 95, 100],
+    [70, 80, 75]
+])
+
+print(np.sum(grades,axis=1))
+print(np.mean(grades,axis=0))
+high=np.max(grades,axis=1)
+print(high)
+print(np.min(grades,axis=0))
+
+# Problem 38 
+# A company records its monthly online and store sales.
+  
+# import numpy as np
+# online_sales = np.array([500, 700, 900, 600])
+# store_sales = np.array([800, 600, 1000, 900])
+
+# Write a program to:
+# 1. Combine both arrays into one array.
+# 2. Calculate the total online sales.
+# 3. Calculate the total store sales.
+# 4. Calculate the difference between store and online sales for each month.
+# 5. Calculate the average of all sales combined.
+import numpy as np
+online_sales = np.array([500, 700, 900, 600])
+store_sales = np.array([800, 600, 1000, 900])
+
+print(np.concatenate((online_sales,store_sales)))
+print(np.sum(online_sales))
+print(np.sum(store_sales))
+print(store_sales-online_sales)
+print(np.mean(np.concatenate((online_sales,store_sales))))
+
+# Problem 39 
+# Final beginner challenge
+# A small company wants to analyze its daily sales.
+
+# Use this dataset:
+# import numpy as np
+# sales = np.array([    1200, 1500, 900, 2300, 1800,    2700, 1100, 3000, 2100, 1600])
+
+# Write a program that calculates and prints:
+# 1. Total sales.
+# 2. Average sales.
+# 3. Highest sale.
+# 4. Lowest sale.
+# 5. All sales greater than the average.
+# 6. Number of sales greater than the average.
+# 7. Sales sorted from highest to lowest.
+# 8. Index of the highest sale.
+# 9. Number of sales greater than or equal to 2000.
+import numpy as np
+
+sales = np.array([
+    1200, 1500, 900, 2300, 1800,
+    2700, 1100, 3000, 2100, 1600
+])
+
+print(np.sum(sales))
+print(np.mean(sales))
+print(np.max(sales))
+print(np.min(sales))
+print(sales[sales>np.mean(sales)])
+print(np.sort(sales)[::-1])
+print(np.argmax(sales))
+print(len(sales[(sales>=2000)]))
+
+
+
+
